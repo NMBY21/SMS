@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: sms
+    env: php
+    buildCommand: composer install --no-dev --optimize-autoloader
+    startCommand: php artisan serve --host 0.0.0.0 --port 10000
+    envVars:
+      - key: APP_ENV
+        value: local
+      - key: APP_KEY
+        value: base64:KcLcS3WBI4/fRo9NYW6R6MH7b1o4cIdpnvyADAwjy0Y=
+      - key: APP_DEBUG
+        value: true
+      - key: APP_URL
+        value: https://sms.onrender.com
+      - key: DB_CONNECTION
+        value: mysql
+      - key: DB_HOST
+        value: 127.0.0.1
+      - key: DB_PORT
+        value: 3306
+      - key: DB_DATABASE
+        value: school
+      - key: DB_USERNAME
+        value: root
+      
