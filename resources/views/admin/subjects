@@ -1,0 +1,35 @@
+@extends('admin.layout')
+
+@section('content')
+<div class="container mx-auto">
+    <h1 class="text-2xl font-bold mb-4">Manage Subjects</h1>
+
+    <div class="mb-4">
+        <a href="{{ route('admin.subjects.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Add New Subject</a>
+    </div>
+
+    <table class="min-w-full bg-white border border-gray-300">
+        <thead>
+            <tr>
+                <th class="py-2 px-4 border-b">Subject Name</th>
+                <th class="py-2 px-4 border-b">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($subjects as $subject)
+                <tr>
+                    <td class="py-2 px-4 border-b">{{ $subject->name }}</td>
+                    <td class="py-2 px-4 border-b">
+                        <a href="{{ route('admin.subjects.edit', $subject->id) }}" class="text-yellow-500">Edit</a>
+                        <form action="{{ route('admin.subjects.destroy', $subject->id) }}" method="POST" class="inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="text-red-500">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+@endsection

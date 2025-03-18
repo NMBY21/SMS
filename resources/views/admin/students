@@ -1,0 +1,43 @@
+@extends('admin.layout')
+
+@section('content')
+<div class="container mx-auto">
+    <h1 class="text-2xl font-bold mb-4">Manage Students</h1>
+
+    <div class="mb-4">
+        <a href="{{ route('admin.students.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Add New Student</a>
+    </div>
+
+    @if($students->isEmpty())
+        <p>No students found.</p>
+    @else
+        <table class="min-w-full bg-white border border-gray-300">
+            <thead>
+                <tr>
+                    <th class="border-b px-4 py-2">ID</th>
+                    <th class="border-b px-4 py-2">Name</th>
+                    <th class="border-b px-4 py-2">Email</th>
+                    <th class="border-b px-4 py-2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($students as $student)
+                    <tr>
+                        <td class="border-b px-4 py-2">{{ $student->id }}</td>
+                        <td class="border-b px-4 py-2">{{ $student->name }}</td>
+                        <td class="border-b px-4 py-2">{{ $student->email }}</td>
+                        <td class="border-b px-4 py-2">
+                            <a href="{{ route('admin.students.edit', $student->id) }}" class="text-yellow-500">Edit</a>
+                            <form action="{{ route('admin.students.destroy', $student->id) }}" method="POST" class="inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-red-500">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @endif
+</div>
+@endsection

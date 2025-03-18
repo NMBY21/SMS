@@ -1,0 +1,40 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <h1 class="mb-4">Manage Grades</h1>
+
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Subject</th>
+                <th>Marks</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($grades as $grade)
+                <tr>
+                    <td>{{ $grade->student->name }}</td>
+                    <td>{{ $grade->subject->name }}</td>
+                    <td>{{ $grade->marks }}</td>
+                    <td>
+                        <a href="{{ route('teacher.grades.edit', $grade->id) }}" class="btn btn-primary">Edit</a>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+    <div class="mt-4">
+        <a href="{{ route('teacher.grades.create') }}" class="btn btn-success">Add Grade</a>
+    </div>
+</div>
+@endsection

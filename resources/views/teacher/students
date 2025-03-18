@@ -1,0 +1,32 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <h1>Assigned Students</h1>
+
+    @if($students->isEmpty())
+        <p>No students assigned.</p>
+    @else
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Grades</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($students as $student)
+                    <tr>
+                        <td>{{ $student->name }}</td>
+                        <td>{{ $student->email }}</td>
+                        <td>
+                            <a href="{{ route('teacher.grades.show', $student->id) }}" class="btn btn-primary">View Grades</a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @endif
+</div>
+@endsection
