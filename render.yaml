@@ -6,11 +6,11 @@ services:
     dockerfilePath: ./Dockerfile
     envVars:
       - key: APP_ENV
-        value: local
+        value: production
       - key: APP_KEY
         value: base64:KcLcS3WBI4/fRo9NYW6R6MH7b1o4cIdpnvyADAwjy0Y=
       - key: APP_DEBUG
-        value: true
+        value: false
       - key: APP_URL
         value: https://school-management-system-m2c1.onrender.com
       - key: DB_CONNECTION
@@ -24,4 +24,4 @@ services:
       - key: DB_USERNAME
         value: root
       - key: DB_PASSWORD
-        value: 
+        value:
