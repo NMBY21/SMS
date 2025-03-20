@@ -1,18 +1,18 @@
 services:
   - type: web
-    name: sms
-    env: php
-    buildCommand: composer install --no-dev --optimize-autoloader
-    startCommand: php artisan serve --host 0.0.0.0 --port 10000
+    name: school-management-system
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: APP_ENV
-        value: local
+        value: production
       - key: APP_KEY
         value: base64:KcLcS3WBI4/fRo9NYW6R6MH7b1o4cIdpnvyADAwjy0Y=
       - key: APP_DEBUG
-        value: true
+        value: false
       - key: APP_URL
-        value: https://sms.onrender.com
+        value: https://school-management-system.onrender.com
       - key: DB_CONNECTION
         value: mysql
       - key: DB_HOST
@@ -23,4 +23,5 @@ services:
         value: school
       - key: DB_USERNAME
         value: root
-      
+      - key: DB_PASSWORD
+        value: ''
