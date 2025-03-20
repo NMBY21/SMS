@@ -24,8 +24,8 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY . /var/www
 
 # Set permissions for storage and bootstrap/cache
+RUN chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
-
 # Copy Nginx configuration
 COPY ./nginx.conf /etc/nginx/sites-available/default
 

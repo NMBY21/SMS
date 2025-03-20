@@ -12,7 +12,7 @@ services:
       - key: APP_DEBUG
         value: false
       - key: APP_URL
-        value: https://school-management-system.onrender.com
+        value: https://school-management-system-m2c1.onrender.com
       - key: DB_CONNECTION
         value: mysql
       - key: DB_HOST
